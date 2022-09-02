@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f2ce96a9ee15c43b664a193bc47b8f, type: 3}
+  m_Name: LevelManager
+  m_EditorClassIdentifier: 
+  levels:
+  - {fileID: 11400000, guid: 74d5523017fda944293106c970275ade, type: 2}
+  menus:
+  - {fileID: 11400000, guid: 419c546b41a7a054aa487e63b150e3a8, type: 2}
+  - {fileID: 11400000, guid: 31b3d3f0bcd71d146888a7c65427551b, type: 2}
+  - {fileID: 11400000, guid: 95b25e631c773704d8d1ab98a6cd8ed2, type: 2}
+  - {fileID: 11400000, guid: 71df4e7c011d1bf4ab9a30c658cb0688, type: 2}
+  - {fileID: 11400000, guid: bbe5faac604bc724794ffd8e442a903c, type: 2}
+  CurrentLevelIndex: 0
+  OnUnloadPauseScene: {fileID: 11400000, guid: a42134e9366fd194a9e77772df28a2a5, type: 2}

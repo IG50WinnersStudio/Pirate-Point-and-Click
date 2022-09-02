@@ -1,0 +1,20 @@
+using UnityEngine;
+
+
+[CreateAssetMenu(fileName = "NewMenu", menuName = "Scriptable Objects/Scene Data/Menu")]
+public class MenuSceneSO : GameSceneSO
+{
+    // Choose which type of menu from the editor
+    [Header("Menu specific")]
+    [SerializeField] private Type type;
+}
+
+
+public enum Type
+{
+    Main_Menu,
+    Pause_Menu,
+    Sound_Menu,
+    Info_Menu,
+    Highscore_Menu   
+}
