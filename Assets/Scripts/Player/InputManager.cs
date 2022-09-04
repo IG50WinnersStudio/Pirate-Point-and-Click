@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 
 public class InputManager : MonoBehaviour
@@ -12,6 +14,7 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private GameEventSO OnLoadPauseScene;
     [SerializeField] private GameEventSO OnUnloadPauseSceneWithKey;
+    [SerializeField] private GameEventSO OnCheckForSelectee;
 
     [SerializeField] private Movement movement;
 
@@ -22,9 +25,6 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        
-        // Hide mouse cursor at the centre of screen when in game
-        Cursor.lockState = CursorLockMode.Locked;
 
         // Set time scale to normal speed
         Time.timeScale = 1;
@@ -38,17 +38,14 @@ public class InputManager : MonoBehaviour
         // Pause pressed
         playerActions.Pause.performed += _ => OnPausePressed();
 
+        // Left Mouse button pressed
+        playerActions.Select.performed += ctx => OnLeftMouseBtnClicked(ctx);
 
         #endregion PLAYER ACTIONS INITIALIZATION
     }
 
 
-    public void OnCrossedFinishLine()
-    {    
-        // Stop controls of player
-        controls.Player.Disable();
-    }
-
+    #region PAUSE
 
     private void OnPausePressed()
     {
@@ -102,6 +99,27 @@ public class InputManager : MonoBehaviour
         controls.Player.Enable();
     }
 
+    #endregion PAUSE
+
+
+    #region MOUSE CONTROLS
+
+    public void OnLeftMouseBtnClicked(InputAction.CallbackContext ctx)
+    {
+        if (ctx.interaction is PressInteraction)
+        {
+            OnCheckForSelectee.Raise();
+        }
+        else if (ctx.interaction is HoldInteraction)
+        {
+            Debug.Log("Holding ###################");
+        }
+    }
+
+    #endregion MOUSE CONTROLS
+
+
+    #region ENABLING
 
     private void OnEnable()
     {
@@ -113,4 +131,6 @@ public class InputManager : MonoBehaviour
     {
         controls.Disable();
     }
+
+    #endregion ENABLING
 }
