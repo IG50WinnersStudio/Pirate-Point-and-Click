@@ -475,7 +475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
@@ -488,7 +488,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cc5f612e3a1fca548a7c4ca14ac80b0a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc5f612e3a1fca548a7c4ca14ac80b0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -617,7 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
@@ -669,7 +669,7 @@ Transform:
   - {fileID: 123048569}
   - {fileID: 1152178530}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &435810998
 PrefabInstance:
@@ -748,7 +748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 55066638ca0809b4e8a2021ac5f62eb9, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55066638ca0809b4e8a2021ac5f62eb9, type: 3}
@@ -763,6 +763,7 @@ GameObject:
   - component: {fileID: 455633608}
   - component: {fileID: 455633607}
   - component: {fileID: 455633606}
+  - component: {fileID: 455633609}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -836,24 +837,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
---- !u!1 &460116370 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-  m_PrefabInstance: {fileID: 795490246}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &460116374
-BoxCollider:
+--- !u!114 &455633609
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460116370}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 455633605}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5165567, y: 2.3081214, z: 1.6455375}
-  m_Center: {x: 0.00000032782563, y: 1.1556443, z: 0.0000013113025}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d406bc87ee95f4342895675ccb2f6d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 455633607}
 --- !u!1 &498600732 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
@@ -924,6 +920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Listens for load pause scene event.
+  Event: {fileID: 11400000, guid: 9d758bb4d6a180448bb382067f7597ef, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -939,7 +936,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Event: {fileID: 11400000, guid: 9d758bb4d6a180448bb382067f7597ef, type: 2}
 --- !u!114 &557347761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,6 +949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: OnLoadHighscoreScene
+  Event: {fileID: 11400000, guid: cd2f15184dc85114eaead7cb4a84a61e, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -968,7 +965,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Event: {fileID: 11400000, guid: cd2f15184dc85114eaead7cb4a84a61e, type: 2}
 --- !u!114 &557347762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,6 +978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Listens for unload pause scene
+  Event: {fileID: 11400000, guid: a42134e9366fd194a9e77772df28a2a5, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -997,7 +994,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Event: {fileID: 11400000, guid: a42134e9366fd194a9e77772df28a2a5, type: 2}
 --- !u!1 &559483045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1086,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &603734315
 GameObject:
@@ -1283,7 +1279,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &681572449
 PrefabInstance:
@@ -1350,7 +1346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
@@ -1406,7 +1402,7 @@ Transform:
   m_Children:
   - {fileID: 1356535545}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &684013973
 AudioSource:
@@ -1532,6 +1528,7 @@ MonoBehaviour:
   OnLoadPauseScene: {fileID: 11400000, guid: 9d758bb4d6a180448bb382067f7597ef, type: 2}
   OnUnloadPauseSceneWithKey: {fileID: 11400000, guid: 38e6dfd44638f3d44b5110f87d18637c, type: 2}
   OnCheckForSelectee: {fileID: 11400000, guid: 3162d382d3fcb23479af4fb2f24927d8, type: 2}
+  MakeCameraRoll: {fileID: 11400000, guid: 621ac6e58b314ed4ea37b6c72165dafd, type: 2}
   movement: {fileID: 684013974}
   audioSource: {fileID: 684013973}
 --- !u!1 &718542727
@@ -1652,75 +1649,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6264831526926562434, guid: 8678f8ec6fc9c1541ae261ce8269467e, type: 3}
---- !u!1001 &795490246
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.61
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.825
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_Name
-      value: Bookcase
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d0d2996c3dd1959429185982722520d7, type: 3}
-      propertyPath: m_TagString
-      value: Selectable
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d0d2996c3dd1959429185982722520d7, type: 3}
 --- !u!1001 &1019504737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1798,7 +1726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8dc2e6d4ceb3e0048b2e94c1d90efe55, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dc2e6d4ceb3e0048b2e94c1d90efe55, type: 3}
@@ -1882,7 +1810,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0ecafca55d3154249819dcf28f58b324, type: 2}
     - target: {fileID: 919132149155446097, guid: d0d2996c3dd1959429185982722520d7, type: 3}
       propertyPath: m_Name
-      value: Bookcase (1)
+      value: Bookcase
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d0d2996c3dd1959429185982722520d7, type: 3}
       propertyPath: m_Layer
@@ -1890,7 +1818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d0d2996c3dd1959429185982722520d7, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0d2996c3dd1959429185982722520d7, type: 3}
@@ -1915,8 +1843,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7867711, y: 0.13488808, z: 1.7769265}
-  m_Center: {x: 0.013759285, y: 0.61186683, z: 0.043095026}
+  m_Size: {x: 0.7867711, y: 0.6100996, z: 1.7769265}
+  m_Center: {x: 0.013759273, y: 0.37426037, z: 0.043095026}
 --- !u!1 &1119158952 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
@@ -2090,8 +2018,16 @@ PrefabInstance:
       value: Hidden_Wall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 98429469faceae5408c82a266a2887be, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98429469faceae5408c82a266a2887be, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98429469faceae5408c82a266a2887be, type: 3}
+      propertyPath: m_TagString
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98429469faceae5408c82a266a2887be, type: 3}
@@ -2172,7 +2108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4555827a60d0c144b9595bb993ee38bc, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Furniture
       objectReference: {fileID: 0}
     - target: {fileID: 4407187375235809858, guid: 4555827a60d0c144b9595bb993ee38bc, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2369,6 +2305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1469643899}
+  - component: {fileID: 1469643900}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2391,8 +2328,37 @@ Transform:
   - {fileID: 557347759}
   - {fileID: 1784227498}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1469643900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469643898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aaf1e953733e6940a1ea7a1e849f8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: OnLeftRollPressed
+  Event: {fileID: 11400000, guid: 621ac6e58b314ed4ea37b6c72165dafd, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MoveCameraTransform, Assembly-CSharp
+        m_MethodName: OnMakeCameraRoll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1524412875 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
@@ -2481,7 +2447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
@@ -2544,6 +2510,8 @@ GameObject:
   - component: {fileID: 1784227500}
   - component: {fileID: 1784227501}
   - component: {fileID: 1784227502}
+  - component: {fileID: 1784227504}
+  - component: {fileID: 1784227503}
   m_Layer: 0
   m_Name: SelectionManager
   m_TagString: Untagged
@@ -2609,6 +2577,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b803521cdf462084d815f68d3bbdd23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnRequestRaycastHitInfo: {fileID: 11400000, guid: 123cdc99467d1504593940f21b2ef0e3, type: 2}
+  OnResetCameraPosition: {fileID: 11400000, guid: 752080029e1a47547bd7be1aca334731, type: 2}
 --- !u!114 &1784227502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2622,6 +2592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: OnCheckForSelectee
+  Event: {fileID: 11400000, guid: 3162d382d3fcb23479af4fb2f24927d8, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -2637,7 +2608,64 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Event: {fileID: 11400000, guid: 3162d382d3fcb23479af4fb2f24927d8, type: 2}
+--- !u!114 &1784227503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784227497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d11cd520ba436041ac918a7cf620968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: OnRequestRaycastHitInfo
+  gameEventHitInfo: {fileID: 11400000, guid: 123cdc99467d1504593940f21b2ef0e3, type: 2}
+  ResponseHitInfo:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 455633609}
+        m_TargetAssemblyTypeName: CameraLerp, Assembly-CSharp
+        m_MethodName: OnMoveCameraPosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1784227504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784227497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aaf1e953733e6940a1ea7a1e849f8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: OnResetCameraPosition
+  Event: {fileID: 11400000, guid: 752080029e1a47547bd7be1aca334731, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 455633609}
+        m_TargetAssemblyTypeName: CameraLerp, Assembly-CSharp
+        m_MethodName: OnResetCameraPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1823146297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2715,7 +2743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8678f8ec6fc9c1541ae261ce8269467e, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8678f8ec6fc9c1541ae261ce8269467e, type: 3}
@@ -2784,7 +2812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
@@ -2876,7 +2904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
       propertyPath: m_TagString
-      value: Selectable
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a8f7c7be98929429b16a6407de86a1, type: 3}
@@ -2893,7 +2921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6dde177e755112e47b3276891a4f0e58, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.002734
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6dde177e755112e47b3276891a4f0e58, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2946,6 +2974,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6dde177e755112e47b3276891a4f0e58, type: 3}
       propertyPath: m_Name
       value: Captain Cabin
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6dde177e755112e47b3276891a4f0e58, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6dde177e755112e47b3276891a4f0e58, type: 3}
+      propertyPath: m_TagString
+      value: Furniture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dde177e755112e47b3276891a4f0e58, type: 3}

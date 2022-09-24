@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private GameEventSO OnLoadPauseScene;
     [SerializeField] private GameEventSO OnUnloadPauseSceneWithKey;
     [SerializeField] private GameEventSO OnCheckForSelectee;
+    [SerializeField] private GameEventSO MakeCameraRoll;
 
     [SerializeField] private Movement movement;
 
@@ -41,7 +42,17 @@ public class InputManager : MonoBehaviour
         // Left Mouse button pressed
         playerActions.Select.performed += ctx => OnLeftMouseBtnClicked(ctx);
 
+        // Roll Left
+        playerActions.RollLeft.performed += _ => OnRollLeftPerformed();
+
         #endregion PLAYER ACTIONS INITIALIZATION
+    }
+
+
+    private void OnRollLeftPerformed()
+    {
+        Debug.Log("In OnRollLeftPerformed method");
+        MakeCameraRoll.Raise();
     }
 
 
@@ -88,9 +99,6 @@ public class InputManager : MonoBehaviour
 
         // Resume the ingame music
         audioSource.Play();
-
-        // Hide mouse cursor at the centre of screen when go back to game
-        Cursor.lockState = CursorLockMode.Locked;
 
         // Set time scale back to normal speed
         Time.timeScale = 1;

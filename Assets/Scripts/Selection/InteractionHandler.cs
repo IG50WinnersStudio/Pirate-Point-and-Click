@@ -12,6 +12,9 @@ public class InteractionHandler : MonoBehaviour
     //[SerializeField] private GameEventSO OnEscapeDoorClicked;
     //[SerializeField] private GameEventSO OnKeyPadDoorClicked;
 
+    [SerializeField] private RaycastHitEventSO OnRequestRaycastHitInfo;
+    [SerializeField] private GameEventSO OnResetCameraPosition;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -22,24 +25,43 @@ public class InteractionHandler : MonoBehaviour
 
 
     /// <summary>
-    /// A method that is called when Left Mouse button clicked
+    /// A method that is called when Left Mouse button is clicked
     /// Is used with the new Input System.
     /// This method gets the hit info from an object
     /// </summary>
-    /// <param name="context"></param>
+    /// 
     public void OnSelectObject()
     {
-        //Debug.Log("In OnSelectObject! ++++++++++++++++++++++++++");
-        // Create a Ray and Check if it is pointing at a selectable object,
-        // if so then set the hitInfo transform to the 'selector' Class local variable 'selection'
+        // Create a Ray and Check if it is touching an 'interactable' layered object,
         selector.Check(rayProvider.CreateRay()); 
 
-        // If the hitInfo.Transform is not null
+        // If the Ray is touching an 'interactable' layered object, hence not null
         if (selector.GetSelection() != null) 
         {
-            hitInfo = selector.GetHitInfo(); // Get the hit info
+            // Get the hit info
+            hitInfo = selector.GetHitInfo(); 
 
-            Debug.Log(hitInfo.collider.gameObject.name + "! ++++++++++++++++++++++++++");
+            string gameObjectTag = hitInfo.collider.gameObject.tag;
+
+            // Send the hitInfo to whatever listener is waiting for it like the CameraLerp script
+            // that will use this Transform position to move the camera to this hitInfo position
+            //OnRequestRaycastHitInfo.Raise(hitInfo);
+
+
+            switch (gameObjectTag)
+            {
+                case "Furniture":
+                    Debug.Log("Key Object: " + hitInfo.collider.gameObject.name + "! ++++++++++++++++++++++++++");
+                    OnRequestRaycastHitInfo.Raise(hitInfo);
+                    break;
+
+                default:
+                    Debug.Log("NOT a Key Object: " + hitInfo.collider.gameObject.name + "! ++++++++++++++++++++++++++");
+
+                    //OnResetCameraPosition.Raise();
+                    break;
+            }
+
 
             //// Check the left click distance to the body and change camera's if close enough, else display alert text and return
             //if (hitInfo.collider.transform.parent.gameObject.CompareTag("OperationMan"))
@@ -52,6 +74,10 @@ public class InteractionHandler : MonoBehaviour
             //    print("OnKeyPadDoorClicked ************************************");
             //    OnKeyPadDoorClicked.Raise();
             //}
+        }
+        else
+        {
+            OnResetCameraPosition.Raise();
         }
     }
 }
