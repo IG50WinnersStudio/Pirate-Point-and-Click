@@ -53,6 +53,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold,Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RollLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""ec0d9e22-e31f-4516-86e3-510d84476e97"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -80,6 +89,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a1e6017c-1acd-4fb0-89fe-800449464752"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""fc589f1f-0d9e-40e3-9e48-dc7614dcfecb"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -97,6 +117,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e15de806-4f2d-4367-87a0-03b5904cdf62"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RollLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -149,6 +180,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
+        m_Player_RollLeft = m_Player.FindAction("RollLeft", throwIfNotFound: true);
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Unpause = m_PauseMenu.FindAction("Unpause", throwIfNotFound: true);
@@ -214,6 +246,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Select;
+    private readonly InputAction m_Player_RollLeft;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -221,6 +254,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Select => m_Wrapper.m_Player_Select;
+        public InputAction @RollLeft => m_Wrapper.m_Player_RollLeft;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -239,6 +273,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Select.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
                 @Select.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
                 @Select.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                @RollLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollLeft;
+                @RollLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollLeft;
+                @RollLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollLeft;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -252,6 +289,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Select.started += instance.OnSelect;
                 @Select.performed += instance.OnSelect;
                 @Select.canceled += instance.OnSelect;
+                @RollLeft.started += instance.OnRollLeft;
+                @RollLeft.performed += instance.OnRollLeft;
+                @RollLeft.canceled += instance.OnRollLeft;
             }
         }
     }
@@ -294,6 +334,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
+        void OnRollLeft(InputAction.CallbackContext context);
     }
     public interface IPauseMenuActions
     {

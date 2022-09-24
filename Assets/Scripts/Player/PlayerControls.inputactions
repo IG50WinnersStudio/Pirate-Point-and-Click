@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "Hold,Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RollLeft",
+                    "type": "Button",
+                    "id": "ec0d9e22-e31f-4516-86e3-510d84476e97",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -58,6 +67,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a1e6017c-1acd-4fb0-89fe-800449464752",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fc589f1f-0d9e-40e3-9e48-dc7614dcfecb",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -75,6 +95,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e15de806-4f2d-4367-87a0-03b5904cdf62",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RollLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

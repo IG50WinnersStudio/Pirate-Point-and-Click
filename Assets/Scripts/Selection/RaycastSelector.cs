@@ -28,12 +28,14 @@ public class RaycastSelector : MonoBehaviour, ISelector
         selection = null;
         if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask.value))
         {
-            var currentSelection = hitInfo.transform;
+            selection = hitInfo.transform;
 
-            if (currentSelection.CompareTag(selectableTag))
-            {
-                selection = currentSelection;
-            }
+            //var currentSelection = hitInfo.transform;
+
+            //if (currentSelection.CompareTag(selectableTag))
+            //{
+            //    selection = currentSelection;
+            //}
         }
     }
 }

@@ -11,24 +11,25 @@ public class GameEventSO : ScriptableObject
 
     private List<GameEventListenerSO> listeners = new List<GameEventListenerSO>();
 
+
     [ContextMenu("Raise Event")]
     public virtual void Raise()
     {
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
-            listeners[i].OnEventRaised();
+            listeners[i].OnGameEventRaised();
         }
     }
 
-    public void RegisterListener(GameEventListenerSO listener)
+    public virtual void RegisterListener(GameEventListenerSO gameEventListener)
     {
-        if (!listeners.Contains(listener))
-            listeners.Add(listener);
+        if (!listeners.Contains(gameEventListener))
+            listeners.Add(gameEventListener);
     }
 
-    public void UnregisterListener(GameEventListenerSO listener)
+    public virtual void UnregisterListener(GameEventListenerSO gameEventListener)
     {
-        if (listeners.Contains(listener))
-            listeners.Remove(listener);
+        if (listeners.Contains(gameEventListener))
+            listeners.Remove(gameEventListener);
     }
 }
