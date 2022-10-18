@@ -18,7 +18,7 @@ public class CameraLerp : MonoBehaviour
         defaultPosition = new Vector3(0, 3, -3.5f);
         targetPosition = new Vector3(0, 0, 0);
         defaultRotation = Quaternion.Euler(15, 0, 0);
-        farObjectRotation = Quaternion.Euler(25, 0, 0);
+        farObjectRotation = Quaternion.Euler(30, 0, 0);
         targetRotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -46,7 +46,7 @@ public class CameraLerp : MonoBehaviour
     public void OnMoveCameraPosition(RaycastHit hitInfo)
     {
         isMoving = true;
-        targetPosition = hitInfo.transform.position - new Vector3(0, -hitInfo.collider.bounds.size.y * 1.5f, 3);
+        targetPosition = hitInfo.transform.position - new Vector3(0, -hitInfo.collider.bounds.size.y * 1.4f, 2.5f);
 
         // If the object is past half way of the floor away from the player then increase the rotation angle to look down more on the object
         if (hitInfo.transform.localPosition.x > 3)
