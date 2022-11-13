@@ -4,22 +4,22 @@ using UnityEngine;
 public class CameraLerp : MonoBehaviour
 {
     private Quaternion defaultRotation;
-    private Quaternion farObjectRotation;
+    private Quaternion bookcaseRotation;
     private Quaternion targetRotation;
     private Vector3 defaultPosition;
     private Vector3 targetPosition;
-    private float moveSpeed = 0.025f;
-    private float smoothSpeed = 0.025f;
+    private float rotationSpeed = 0.05f;
+    private float positionSpeed = 0.1f;
     private bool isMoving = false;
 
 
     private void Awake()
     {      
-        defaultPosition = new Vector3(0, 3, -3.5f);
+        defaultPosition = new Vector3(-3.5f, 3, -7f);
         targetPosition = new Vector3(0, 0, 0);
-        defaultRotation = Quaternion.Euler(15, 0, 0);
-        farObjectRotation = Quaternion.Euler(30, 0, 0);
-        targetRotation = Quaternion.Euler(0, 0, 0);
+        defaultRotation = Quaternion.Euler(15, 90f, 0); // rotating downwards
+        bookcaseRotation = Quaternion.Euler(30, 90f, 0); // rotating downwards
+        targetRotation = Quaternion.Euler(15f, 90f, 0);
     }
 
 
@@ -29,8 +29,8 @@ public class CameraLerp : MonoBehaviour
         if (isMoving)
         {
             // Lerp toward target rotation and position at all times.
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, moveSpeed);
-            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, positionSpeed);
 
             // If the camera reaches its target position then set 'isMoving' bool to false
             if (transform.position == targetPosition)
@@ -46,11 +46,13 @@ public class CameraLerp : MonoBehaviour
     public void OnMoveCameraPosition(RaycastHit hitInfo)
     {
         isMoving = true;
-        targetPosition = hitInfo.transform.position - new Vector3(0, -hitInfo.collider.bounds.size.y * 1.4f, 2.5f);
+        targetPosition = hitInfo.transform.position - new Vector3(2.5f, -hitInfo.collider.bounds.size.y * 1.25f, 0);
 
         // If the object is past half way of the floor away from the player then increase the rotation angle to look down more on the object
-        if (hitInfo.transform.localPosition.x > 3)
-            targetRotation = farObjectRotation;
+        if (hitInfo.transform.tag.Equals("Bookcase"))
+        {
+            targetRotation = bookcaseRotation;
+        }
         else
             targetRotation = defaultRotation;
         

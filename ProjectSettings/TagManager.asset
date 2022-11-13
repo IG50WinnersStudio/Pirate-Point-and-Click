@@ -7,6 +7,7 @@ TagManager:
   - Selectable
   - Key Object
   - Furniture
+  - Bookcase
   layers:
   - Default
   - TransparentFX
