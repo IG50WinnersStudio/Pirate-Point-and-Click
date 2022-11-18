@@ -3,7 +3,97 @@ guid: 58e0f1c99a003d24aa5be6085c8506a0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01 - Default
+    second: {fileID: 2100000, guid: 059d913e9102e1b4e8db2a5f117370b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beam H
+    second: {fileID: 2100000, guid: ffc78a393c119ea43a94c4636b617b38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beam H S
+    second: {fileID: 2100000, guid: e8cd3125d6aa7e04698070d5bafb8d27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beam V
+    second: {fileID: 2100000, guid: 0c150663d812d2e47b19969fb9d36c20, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beam V S
+    second: {fileID: 2100000, guid: 6f1f6f48e9b636741a4c99783000f8e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door
+    second: {fileID: 2100000, guid: feb34448631565e4e8c3d5babdff2387, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door MEch
+    second: {fileID: 2100000, guid: bf23f9a8c62087b4293251de952fa4b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MEtal Rings
+    second: {fileID: 2100000, guid: 5c2c3a324695db34bac3bc14b1a99605, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal Hangers S
+    second: {fileID: 2100000, guid: e504ac390a59d024eaf9722d30fc8ff0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Parete Centrale
+    second: {fileID: 2100000, guid: be823cac37b53a740b9f5a0c0082ac28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Parete Finestra
+    second: {fileID: 2100000, guid: 3237e1be1fc01aa448df0234893ac03b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Parete Porta
+    second: {fileID: 2100000, guid: 4d7ff0b07fffc6d41b1b94a74ea342c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Planks
+    second: {fileID: 2100000, guid: 242e4d7f190a50e4dae332ad95a1fe95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Planks_Irregular1
+    second: {fileID: 2100000, guid: 730ec69a2983529488229444b077fee7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Planks_Irregular2
+    second: {fileID: 2100000, guid: 078512d0bc578a447857df7c50f0f451, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Planks_Irregular3
+    second: {fileID: 2100000, guid: 0937c6232e6637b4881ff223401a788a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Planks_Irregular4
+    second: {fileID: 2100000, guid: 8bc2afeae317d71499972ce5b92eb3eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window
+    second: {fileID: 2100000, guid: fda76644c3d0afd46a41e601bbb6bec1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
