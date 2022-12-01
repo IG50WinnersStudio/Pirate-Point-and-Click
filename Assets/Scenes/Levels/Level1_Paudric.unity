@@ -3807,6 +3807,10 @@ PrefabInstance:
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 272b0b2c88f4bd340831b28b45590712, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 272b0b2c88f4bd340831b28b45590712, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3858,6 +3862,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1087238426181453513, guid: 272b0b2c88f4bd340831b28b45590712, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d1130d5a2cfc28a41a4ef6415b4302ce, type: 2}
     - target: {fileID: 919132149155446097, guid: 272b0b2c88f4bd340831b28b45590712, type: 3}
       propertyPath: m_Name
       value: HD_Picture
