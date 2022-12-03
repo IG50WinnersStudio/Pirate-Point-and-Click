@@ -52,6 +52,7 @@ public class InteractionHandler : MonoBehaviour
             {
                 case "Furniture":
                 case "Bookcase":
+                case "Desk":
                     Debug.Log("Key Object: " + hitInfo.collider.gameObject.name + "! ++++++++++++++++++++++++++");
                     OnRequestRaycastHitInfo.Raise(hitInfo);
                     break;

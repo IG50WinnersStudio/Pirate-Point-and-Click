@@ -8,6 +8,7 @@ TagManager:
   - Key Object
   - Furniture
   - Bookcase
+  - Desk
   layers:
   - Default
   - TransparentFX
