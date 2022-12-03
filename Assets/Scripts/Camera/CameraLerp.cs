@@ -15,7 +15,7 @@ public class CameraLerp : MonoBehaviour
 
     private void Awake()
     {      
-        defaultPosition = new Vector3(-3.5f, 3, -7f);
+        defaultPosition = new Vector3(-3.5f, 3, -8f);
         targetPosition = new Vector3(0, 0, 0);
         defaultRotation = Quaternion.Euler(15, 90f, 0); // rotating downwards
         bookcaseRotation = Quaternion.Euler(30, 90f, 0); // rotating downwards
