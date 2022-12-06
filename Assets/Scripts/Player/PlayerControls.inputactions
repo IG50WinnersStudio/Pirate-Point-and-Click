@@ -33,9 +33,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RollLeft",
+                    "name": "Move",
                     "type": "Button",
-                    "id": "ec0d9e22-e31f-4516-86e3-510d84476e97",
+                    "id": "656269d5-4107-4476-aa34-404040ea3851",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -100,12 +100,12 @@
                 },
                 {
                     "name": "",
-                    "id": "e15de806-4f2d-4367-87a0-03b5904cdf62",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
+                    "id": "19aa0065-349b-4c83-ab19-36afd46e2b64",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press,Hold",
                     "processors": "",
                     "groups": "",
-                    "action": "RollLeft",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

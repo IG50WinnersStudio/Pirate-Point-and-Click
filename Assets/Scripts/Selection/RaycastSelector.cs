@@ -23,6 +23,15 @@ public class RaycastSelector : MonoBehaviour, ISelector
     }
 
 
+    //public void Check(Ray ray)
+    //{
+    //    selection = null;
+    //    if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask.value))
+    //    {
+    //        selection = hitInfo.transform;
+    //    }
+    //}
+
     public void Check(Ray ray)
     {
         selection = null;
@@ -30,12 +39,28 @@ public class RaycastSelector : MonoBehaviour, ISelector
         {
             selection = hitInfo.transform;
 
-            //var currentSelection = hitInfo.transform;
-
-            //if (currentSelection.CompareTag(selectableTag))
-            //{
-            //    selection = currentSelection;
-            //}
+            var currentSelection = hitInfo.transform;
+            if (currentSelection.CompareTag(selectableTag))
+            {
+                selection = currentSelection;
+            }
         }
     }
 }
+
+
+
+//public void Check(Ray ray)
+//{
+//    selection = null;
+//    if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask.value))
+//    {
+//        selection = hitInfo.transform;
+
+//        var currentSelection = hitInfo.transform;
+//        if (currentSelection.CompareTag(selectableTag))
+//        {
+//            selection = currentSelection;
+//        }
+//    }
+//}

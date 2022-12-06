@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 
 [System.Serializable]
-public class MyGameObjectEvent : UnityEvent<RaycastHit>
+public class RaycastHitUnityResponse : UnityEvent<RaycastHit>
 {
 }
 
@@ -13,7 +13,7 @@ public class RaycastHitGameEventListenerSO : MonoBehaviour
     [SerializeField] private string description;
     [Tooltip("Specify the game event (scriptable object) which will raise the event")]
     [SerializeField] private RaycastHitEventSO gameEventHitInfo;
-    [SerializeField] private MyGameObjectEvent ResponseHitInfo;
+    [SerializeField] private RaycastHitUnityResponse ResponseHitInfo;
 
 
     private void OnEnable() => gameEventHitInfo.RegisterListener(this);
