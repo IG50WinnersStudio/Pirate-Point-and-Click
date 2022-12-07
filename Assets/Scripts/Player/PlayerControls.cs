@@ -60,7 +60,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""id"": ""656269d5-4107-4476-aa34-404040ea3851"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold,Tap"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -124,7 +124,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""19aa0065-349b-4c83-ab19-36afd46e2b64"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Press,Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",

@@ -2205,6 +2205,7 @@ MonoBehaviour:
   waypointPrefab: {fileID: 201725496}
   sceneAnchor: {fileID: 1982471400}
   currentlySelectedGameObject: {fileID: 11400000, guid: a6ba7e078997e224ca94ef0298f7f49c, type: 2}
+  bobbingStrength: 0.5
 --- !u!114 &1239564909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2232,10 +2233,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.4
-  m_Speed: 10
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 1
-  m_AngularSpeed: 180
+  m_AngularSpeed: 0
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -2243,7 +2244,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0.64
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 2
+  m_ObstacleAvoidanceType: 4
 --- !u!82 &1239564911
 AudioSource:
   m_ObjectHideFlags: 0

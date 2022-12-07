@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -91,18 +92,18 @@ public class CharacterNavigationController : MonoBehaviour
         {
             print("In OnSelectWaypoint !!!!!!!!!!!!!!!!!!!!");
 
-            if (ctx.interaction is PressInteraction)// Walk animation
+            if (ctx.interaction is TapInteraction) // Walk animation
             {
-                print("Press type !!!!!!!!!!!!!!!!!!!!");
-                //animator.SetBool("IsRunning", false);
+                print("Tap Interaction !!!!!!!!!!!!!!!!!!!!!");
+                //animator.SetBool("IsWalking", false);
                 ClickDestination();
             }
-            if (ctx.interaction is HoldInteraction) // Run animation
+            if (ctx.interaction is HoldInteraction)// Run animation
             {
-                print("Hold type !!!!!!!!!!!!!!!!!!!!!");
-                //animator.SetBool("IsWalking", false);
+                print("Hold Interaction !!!!!!!!!!!!!!!!!!!!");
+                //animator.SetBool("IsRunning", false);
                 ClickDestinationRun();
-            }
+            }   
         }
     }
 
@@ -112,7 +113,8 @@ public class CharacterNavigationController : MonoBehaviour
     /// 
     private void Update()
     {
-        if (Vector3.Distance(navMeshAgent.destination, transform.position) <= navMeshAgent.stoppingDistance)
+        // If the players distance to the waypoint position. 0.95f is the navMeshAgent.baseOffset and height from ground
+        if (Vector3.Distance(navMeshAgent.destination, transform.position) <= 0.952f) // (navMeshAgent.stoppingDistance + navMeshAgent.baseOffset)
         {
             ClearWaypoint();
             //animator.SetBool("IsWalking", false);
@@ -145,7 +147,7 @@ public class CharacterNavigationController : MonoBehaviour
             hitInfo = selector.GetHitInfo();
             SetDestination(hitInfo.point);
             SetWaypoint();
-            SetSelected(false);
+            //SetSelected(false);
 
             navMeshAgent.speed = navAgentWalkSpeed;
             //animator.SetBool("IsWalking", true);
@@ -165,7 +167,7 @@ public class CharacterNavigationController : MonoBehaviour
             hitInfo = selector.GetHitInfo();
             SetDestination(hitInfo.point);
             SetWaypoint();
-            SetSelected(false);
+            //SetSelected(false);
 
             navMeshAgent.speed = navAgentRunSpeed;
             //animator.SetBool("IsRunning", true);
