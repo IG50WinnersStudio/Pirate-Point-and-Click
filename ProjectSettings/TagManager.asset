@@ -9,6 +9,7 @@ TagManager:
   - Furniture
   - Bookcase
   - Desk
+  - Animator
   layers:
   - Default
   - TransparentFX

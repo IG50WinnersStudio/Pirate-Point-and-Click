@@ -45,7 +45,7 @@ public class CharacterNavigationController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         rayProvider = GetComponent<IRayProvider>();
         selector = GetComponent<ISelector>();
-        //animator = GetComponent<Animator>();
+        animator = GameObject.FindGameObjectWithTag("Animator").GetComponent<Animator>();
 
         SetSelected(false);
     }
@@ -73,7 +73,7 @@ public class CharacterNavigationController : MonoBehaviour
             currentlySelectedGameObject.Value = null;
             SetSelected(false);
         }
-        else
+        else // if player is not selected then select it
         {
             //set selected new player object
             SetSelected(true);
@@ -90,20 +90,27 @@ public class CharacterNavigationController : MonoBehaviour
         //if a player is selected then determine destination
         if (isSelected && ctx.performed)
         {
-            print("In OnSelectWaypoint !!!!!!!!!!!!!!!!!!!!");
+            selector.Check(rayProvider.CreateRay());
 
-            if (ctx.interaction is TapInteraction) // Walk animation
+            if (selector.GetSelection() != null)
             {
-                print("Tap Interaction !!!!!!!!!!!!!!!!!!!!!");
-                //animator.SetBool("IsWalking", false);
-                ClickDestination();
+                hitInfo = selector.GetHitInfo();
+                SetDestination(hitInfo.point);
+                SetWaypoint();
+
+                if (ctx.interaction is TapInteraction) // Walk animation
+                {
+                    navMeshAgent.speed = navAgentWalkSpeed;
+                    animator.SetBool("IsRunning", false);
+                    animator.SetBool("IsWalking", true);
+                }
+                else if (ctx.interaction is HoldInteraction) // Run animation
+                {
+                    navMeshAgent.speed = navAgentRunSpeed;
+                    animator.SetBool("IsWalking", false);
+                    animator.SetBool("IsRunning", true);
+                }
             }
-            if (ctx.interaction is HoldInteraction)// Run animation
-            {
-                print("Hold Interaction !!!!!!!!!!!!!!!!!!!!");
-                //animator.SetBool("IsRunning", false);
-                ClickDestinationRun();
-            }   
         }
     }
 
@@ -117,8 +124,8 @@ public class CharacterNavigationController : MonoBehaviour
         if (Vector3.Distance(navMeshAgent.destination, transform.position) <= 0.952f) // (navMeshAgent.stoppingDistance + navMeshAgent.baseOffset)
         {
             ClearWaypoint();
-            //animator.SetBool("IsWalking", false);
-            //animator.SetBool("IsRunning", false);
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsRunning", false);
         }
     }
 
@@ -134,45 +141,6 @@ public class CharacterNavigationController : MonoBehaviour
         navMeshAgent.SetDestination(target);
     }
 
-    /// <summary>
-    /// Tests if selector ray intersects with valid destination target
-    /// </summary>
-    /// 
-    private void ClickDestination()
-    {
-        selector.Check(rayProvider.CreateRay());
-
-        if (selector.GetSelection() != null)
-        {
-            hitInfo = selector.GetHitInfo();
-            SetDestination(hitInfo.point);
-            SetWaypoint();
-            //SetSelected(false);
-
-            navMeshAgent.speed = navAgentWalkSpeed;
-            //animator.SetBool("IsWalking", true);
-        }
-    }
-
-    /// <summary>
-    /// Tests if selector ray intersects with valid destination target and runs
-    /// </summary>
-    /// 
-    private void ClickDestinationRun()
-    {
-        selector.Check(rayProvider.CreateRay());
-
-        if (selector.GetSelection() != null)
-        {
-            hitInfo = selector.GetHitInfo();
-            SetDestination(hitInfo.point);
-            SetWaypoint();
-            //SetSelected(false);
-
-            navMeshAgent.speed = navAgentRunSpeed;
-            //animator.SetBool("IsRunning", true);
-        }
-    }
 
     /// <summary>
     /// Set the next naviagable waypoint
