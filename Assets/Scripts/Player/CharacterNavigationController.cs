@@ -30,6 +30,11 @@ public class CharacterNavigationController : MonoBehaviour
     [Tooltip("A scriptable object which holds a reference to the currently selected character")]
     private GameObjectVariable currentlySelectedGameObject;
 
+    [Header("Materials")]
+    [SerializeField] private Material frontal;
+    [SerializeField] private Material sidal;
+    [SerializeField] private MeshRenderer meshRenderer;
+
     private Animator animator;
     private NavMeshAgent navMeshAgent;
     private IRayProvider rayProvider;
@@ -99,6 +104,18 @@ public class CharacterNavigationController : MonoBehaviour
                 SetWaypoint();
                 SetSelected(false);
 
+                // Set the players material and sprite to an image of the player facing left
+                meshRenderer.material = sidal;
+
+                // If you click to the right of the player flip the Z scale to show right facing sprite
+                if (hitInfo.point.z < transform.localPosition.z)
+                    transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 
+                        transform.localScale.z * -1);
+                else // Show left facing sprite by getting the absolute value of Z which is originaly facing left
+                    transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 
+                        Math.Abs(transform.localScale.z));
+                
+                // Clicking interactions, if tap you walk, if you hold you run
                 if (ctx.interaction is TapInteraction) // Walk animation
                 {
                     navMeshAgent.speed = navAgentWalkSpeed;
@@ -127,6 +144,7 @@ public class CharacterNavigationController : MonoBehaviour
             ClearWaypoint();
             animator.SetBool("IsWalking", false);
             animator.SetBool("IsRunning", false);
+            meshRenderer.material = frontal;
         }
     }
 
