@@ -59,6 +59,7 @@ public class InteractionHandler : MonoBehaviour
 
                     default:
                         Debug.Log("NOT a Key Object: " + hitInfo.collider.gameObject.name + "! +++++++++++++++++");
+                        OnResetCameraPosition.Raise();
                         break;
                 }
             }

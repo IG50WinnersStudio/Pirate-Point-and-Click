@@ -41,7 +41,7 @@ public class InputManager : MonoBehaviour
         playerActions.Pause.performed += _ => OnPausePressed();
 
         // Left Mouse button pressed
-        playerActions.Select.performed += ctx => OnLeftMouseBtnClicked(ctx);
+        playerActions.Select.performed += _ => OnLeftMouseBtnClicked();
 
         // Right Mouse button pressed
         playerActions.Move.performed += ctx => OnRightMouseBtnClicked(ctx);
@@ -106,32 +106,15 @@ public class InputManager : MonoBehaviour
 
     #region MOUSE CONTROLS
 
-    public void OnLeftMouseBtnClicked(InputAction.CallbackContext ctx)
+    public void OnLeftMouseBtnClicked()
     {
-        if (ctx.interaction is PressInteraction)
-        {
-            OnCheckForSelectee.Raise();
-        }
-        else if (ctx.interaction is HoldInteraction)
-        {
-            Debug.Log("Holding ###################");
-        }
+        OnCheckForSelectee.Raise();
     }
 
 
     public void OnRightMouseBtnClicked(InputAction.CallbackContext ctx)
     {
         OnPlayerRightClicked.Raise(ctx);
-
-        //if (ctx.interaction is PressInteraction)
-        //{
-        //    OnPlayerRightClicked.Raise();
-        //}
-        //else if (ctx.interaction is HoldInteraction)
-        //{
-        //    OnPlayerRightClicked.Raise(ctx);
-        //    Debug.Log("Holding ###################");
-        //}
     }
 
     #endregion MOUSE CONTROLS
