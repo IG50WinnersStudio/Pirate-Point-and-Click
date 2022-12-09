@@ -97,6 +97,7 @@ public class CharacterNavigationController : MonoBehaviour
                 hitInfo = selector.GetHitInfo();
                 SetDestination(hitInfo.point);
                 SetWaypoint();
+                SetSelected(false);
 
                 if (ctx.interaction is TapInteraction) // Walk animation
                 {
