@@ -15,9 +15,10 @@ public class InputManager : MonoBehaviour
     [SerializeField] private GameEventSO OnLoadPauseScene;
     [SerializeField] private GameEventSO OnUnloadPauseSceneWithKey;
     [SerializeField] private GameEventSO OnCheckForSelectee;
-    [SerializeField] private GameEventSO MakeCameraRoll;
+    [SerializeField] private InputContextEventSO OnPlayerRightClicked;
+    //[SerializeField] private GameEventSO MakeCameraRoll;
 
-    [SerializeField] private Movement movement;
+    //[SerializeField] private Movement movement;
 
     // Reference to Audio Source
     [SerializeField] private AudioSource audioSource;
@@ -40,19 +41,12 @@ public class InputManager : MonoBehaviour
         playerActions.Pause.performed += _ => OnPausePressed();
 
         // Left Mouse button pressed
-        playerActions.Select.performed += ctx => OnLeftMouseBtnClicked(ctx);
+        playerActions.Select.performed += _ => OnLeftMouseBtnClicked();
 
-        // Roll Left
-        playerActions.RollLeft.performed += _ => OnRollLeftPerformed();
+        // Right Mouse button pressed
+        playerActions.Move.performed += ctx => OnRightMouseBtnClicked(ctx);
 
         #endregion PLAYER ACTIONS INITIALIZATION
-    }
-
-
-    private void OnRollLeftPerformed()
-    {
-        Debug.Log("In OnRollLeftPerformed method");
-        MakeCameraRoll.Raise();
     }
 
 
@@ -112,16 +106,15 @@ public class InputManager : MonoBehaviour
 
     #region MOUSE CONTROLS
 
-    public void OnLeftMouseBtnClicked(InputAction.CallbackContext ctx)
+    public void OnLeftMouseBtnClicked()
     {
-        if (ctx.interaction is PressInteraction)
-        {
-            OnCheckForSelectee.Raise();
-        }
-        else if (ctx.interaction is HoldInteraction)
-        {
-            Debug.Log("Holding ###################");
-        }
+        OnCheckForSelectee.Raise();
+    }
+
+
+    public void OnRightMouseBtnClicked(InputAction.CallbackContext ctx)
+    {
+        OnPlayerRightClicked.Raise(ctx);
     }
 
     #endregion MOUSE CONTROLS

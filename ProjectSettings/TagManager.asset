@@ -8,6 +8,8 @@ TagManager:
   - Key Object
   - Furniture
   - Bookcase
+  - Desk
+  - Animator
   layers:
   - Default
   - TransparentFX
