@@ -50,7 +50,6 @@ public class CameraLerp : MonoBehaviour
     public void OnMoveCameraPosition(RaycastHit hitInfo)
     {
         isMoving = true;
-        //playerBody.SetActive(false);
         targetPosition = hitInfo.transform.position - new Vector3(2.5f, -hitInfo.collider.bounds.size.y * 1.25f, 0);
 
         // If the object is past half way of the floor away from the player 

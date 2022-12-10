@@ -126,7 +126,7 @@ public class CharacterNavigationController : MonoBehaviour
                 // If you right click on the floor (name = "NavMeshPlane") don't move the camera 
                 if (hitInfo.transform.gameObject.name != "NavMeshPlane")
                     canCameraMove = true;
-                
+
 
                 // Clicking interactions, if tap you walk, if you hold you run
                 if (ctx.interaction is TapInteraction) // Walk animation
@@ -152,13 +152,11 @@ public class CharacterNavigationController : MonoBehaviour
     private void Update()
     {
         // If the players distance to the waypoint position and the waypoint prefab is active in the hierarchy
-        // 0.95f is the navMeshAgent.baseOffset and height from ground
+        // 0.947f is the navMeshAgent.baseOffset and height from ground
         if (isWaypointActive) 
         {
-            if (Vector3.Distance(navMeshAgent.destination, transform.position) <= 0.952f)
+            if (Vector3.Distance(navMeshAgent.destination, transform.position) < 0.947f)
             {
-                print("In Update Distance method");
-
                 ClearWaypoint();
                 animator.SetBool("IsWalking", false);
                 animator.SetBool("IsRunning", false);
