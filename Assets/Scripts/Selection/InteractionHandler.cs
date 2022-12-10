@@ -38,8 +38,8 @@ public class InteractionHandler : MonoBehaviour
             // Get the hit info
             hitInfo = selector.GetHitInfo();
 
-            // If you click on the Player
-            if (hitInfo.collider.gameObject.name == "Player")
+            // If you click on the Players "Body" object 
+            if (hitInfo.collider.gameObject.name == "Body")
             {
                 // Raise event to deal with what happens when the Player is left clicked 
                 OnPlayerLeftClicked.Raise(hitInfo); 

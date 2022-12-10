@@ -779,9 +779,10 @@ GameObject:
   - component: {fileID: 551628109}
   - component: {fileID: 551628111}
   - component: {fileID: 551628110}
+  - component: {fileID: 551628112}
   m_Layer: 3
-  m_Name: Animator
-  m_TagString: Animator
+  m_Name: Body
+  m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -870,6 +871,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551628107}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &551628112
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551628107}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &582410199
 PrefabInstance:
@@ -2245,7 +2260,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1239564906}
-  - component: {fileID: 1239564914}
   - component: {fileID: 1239564913}
   - component: {fileID: 1239564911}
   - component: {fileID: 1239564910}
@@ -2310,6 +2324,9 @@ MonoBehaviour:
   frontal: {fileID: 2100000, guid: 5385a80f4c864144daa4543d16312c4a, type: 2}
   sidal: {fileID: 2100000, guid: b2a8850a028f9a041ae3a4ad6ce1e80d, type: 2}
   meshRenderer: {fileID: 551628110}
+  animator: {fileID: 551628109}
+  playerBody: {fileID: 551628107}
+  OnMoveCamera: {fileID: 11400000, guid: 4c4914be6c4e36d47b21abedfa74e275, type: 2}
 --- !u!114 &1239564909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2462,19 +2479,6 @@ MonoBehaviour:
   OnCheckForSelectee: {fileID: 11400000, guid: 84409923a6632054e81b7dc04065749c, type: 2}
   OnPlayerRightClicked: {fileID: 11400000, guid: 46ab8b2c02227e640a89d51a10e17e09, type: 2}
   audioSource: {fileID: 1239564911}
---- !u!65 &1239564914
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239564905}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1306131977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3063,6 +3067,7 @@ GameObject:
   - component: {fileID: 1465854666}
   - component: {fileID: 1465854672}
   - component: {fileID: 1465854673}
+  - component: {fileID: 1465854674}
   m_Layer: 0
   m_Name: SelectionManager
   m_TagString: Untagged
@@ -3267,6 +3272,35 @@ MonoBehaviour:
       - m_Target: {fileID: 1239564908}
         m_TargetAssemblyTypeName: CharacterNavigationController, Assembly-CSharp
         m_MethodName: OnSelectWaypoint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1465854674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465854664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d11cd520ba436041ac918a7cf620968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: OnMoveCamera
+  gameEventHitInfo: {fileID: 11400000, guid: 4c4914be6c4e36d47b21abedfa74e275, type: 2}
+  ResponseHitInfo:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2083724442}
+        m_TargetAssemblyTypeName: CameraLerp, Assembly-CSharp
+        m_MethodName: OnMoveCameraPosition
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4246,6 +4280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d406bc87ee95f4342895675ccb2f6d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBody: {fileID: 551628107}
 --- !u!81 &2083724443
 AudioListener:
   m_ObjectHideFlags: 0

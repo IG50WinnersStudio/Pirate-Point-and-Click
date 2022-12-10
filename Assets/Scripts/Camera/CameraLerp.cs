@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CameraLerp : MonoBehaviour
 {
+    [SerializeField] private GameObject playerBody;
+
     private Quaternion defaultRotation;
     private Quaternion bookcaseRotation;
     private Quaternion deskRotation;
@@ -48,6 +50,7 @@ public class CameraLerp : MonoBehaviour
     public void OnMoveCameraPosition(RaycastHit hitInfo)
     {
         isMoving = true;
+        //playerBody.SetActive(false);
         targetPosition = hitInfo.transform.position - new Vector3(2.5f, -hitInfo.collider.bounds.size.y * 1.25f, 0);
 
         // If the object is past half way of the floor away from the player 
@@ -65,13 +68,14 @@ public class CameraLerp : MonoBehaviour
         }
         else
             targetRotation = defaultRotation;
-        
-   }
+
+    }
 
 
     public void OnResetCameraPosition()
     {
         isMoving = true;
+        playerBody.SetActive(true);
         targetPosition = defaultPosition;
         targetRotation = defaultRotation;
     }

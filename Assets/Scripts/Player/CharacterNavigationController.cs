@@ -35,12 +35,20 @@ public class CharacterNavigationController : MonoBehaviour
     [SerializeField] private Material sidal;
     [SerializeField] private MeshRenderer meshRenderer;
 
-    private Animator animator;
+    [Header("Body")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject playerBody;
+
+    [Header("Events")]
+    [SerializeField] private RaycastHitEventSO OnMoveCamera;
+
     private NavMeshAgent navMeshAgent;
     private IRayProvider rayProvider;
     private ISelector selector;
     private RaycastHit hitInfo;
     private bool isSelected;
+    private bool isWaypointActive;
+    private bool canCameraMove;
     private float navAgentWalkSpeed = 1f;
     private float navAgentRunSpeed = 2f;
 
@@ -50,8 +58,7 @@ public class CharacterNavigationController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         rayProvider = GetComponent<IRayProvider>();
         selector = GetComponent<ISelector>();
-        animator = GameObject.FindGameObjectWithTag("Animator").GetComponent<Animator>();
-
+         
         SetSelected(false);
     }
 
@@ -114,7 +121,13 @@ public class CharacterNavigationController : MonoBehaviour
                 else // Show left facing sprite by getting the absolute value of Z which is originaly facing left
                     transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 
                         Math.Abs(transform.localScale.z));
+
+
+                // If you right click on the floor (name = "NavMeshPlane") don't move the camera 
+                if (hitInfo.transform.gameObject.name != "NavMeshPlane")
+                    canCameraMove = true;
                 
+
                 // Clicking interactions, if tap you walk, if you hold you run
                 if (ctx.interaction is TapInteraction) // Walk animation
                 {
@@ -138,14 +151,32 @@ public class CharacterNavigationController : MonoBehaviour
     /// 
     private void Update()
     {
-        // If the players distance to the waypoint position. 0.95f is the navMeshAgent.baseOffset and height from ground
-        if (Vector3.Distance(navMeshAgent.destination, transform.position) <= 0.952f) // (navMeshAgent.stoppingDistance + navMeshAgent.baseOffset)
+        // If the players distance to the waypoint position and the waypoint prefab is active in the hierarchy
+        // 0.95f is the navMeshAgent.baseOffset and height from ground
+        if (isWaypointActive) 
         {
-            ClearWaypoint();
-            animator.SetBool("IsWalking", false);
-            animator.SetBool("IsRunning", false);
-            meshRenderer.material = frontal;
+            if (Vector3.Distance(navMeshAgent.destination, transform.position) <= 0.952f)
+            {
+                print("In Update Distance method");
+
+                ClearWaypoint();
+                animator.SetBool("IsWalking", false);
+                animator.SetBool("IsRunning", false);
+                meshRenderer.material = frontal;
+
+                if (canCameraMove)
+                {
+                    canCameraMove = false;
+
+                    playerBody.transform.localPosition = Vector3.zero;
+                    playerBody.transform.localRotation = Quaternion.identity;
+                    playerBody.SetActive(false);
+
+                    OnMoveCamera.Raise(hitInfo);
+                }
+            }
         }
+    
     }
 
     #region Actions -  Set/Clear destination and waypoint
@@ -167,6 +198,7 @@ public class CharacterNavigationController : MonoBehaviour
     /// 
     private void SetWaypoint()
     {
+        isWaypointActive = true;
         waypointPrefab.SetActive(true);
         waypointPrefab.transform.SetParent(sceneAnchor.transform);
         waypointPrefab.transform.position = navMeshAgent.destination;
@@ -178,6 +210,7 @@ public class CharacterNavigationController : MonoBehaviour
     /// 
     private void ClearWaypoint()
     {
+        isWaypointActive = false;
         waypointPrefab.SetActive(false);
         waypointPrefab.transform.SetParent(transform);
     }
